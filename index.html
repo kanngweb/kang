@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/fonts/iconfont.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="cvs"></div>
+        <header id="header"><img src="images/imgtu.jpg"></header>
+        <section id="section">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/1.jpg"></div>
+                    <div class="swiper-slide"><img src="images/2.jpg"></div>
+                    <div class="swiper-slide"><img src="images/3.jpg"></div>
+                    <div class="swiper-slide"><img src="images/4.jpg"></div>
+                </div>
+            </div>
+            <div id="hua">
+                <div>
+                    <li>
+                        <p style="color:#d3001c;" class="iconfont icon-email"></p>
+                        <a>华人金融</a>
+                    </li>
+                </div>
+
+                <div>
+                    <li>
+                        <p style="color:#f7a400;" class="iconfont icon-QQ_weibo"></p>
+                        <a>0元购</a>
+                    </li>
+                </div>
+                <div>
+                    <li>
+                        <p style="color:#2ecf72;" class="iconfont icon-xinlang1"></p>
+                        <a>安全保障</a>
+                    </li>
+                </div>
+                <div>
+                    <li>
+                        <p style="color:#7582f5;" class="iconfont icon-taobao1"></p>
+                        <a>推荐好友</a>
+                    </li>
+                </div>
+            </div>
+            <div style="margin-top:5px" id="tou">
+                <div id="dv1">
+                    <p class="pl">半</p>
+                    <h6>华金1号 半年投</h6>
+                    <p class="ps">限</p>
+                </div>
+                <div id="dv2">
+                    <li class="liz">年化收益</li>
+                    <li class="lis">期限</li>
+                    <li class="lix">起投金额</li>
+                </div>
+                <div id="dv3">
+                    <li class="li1">10.00%+5.50%</li>
+                    <li class="li2">6个月</li>
+                    <li class="li3">1000元</li>
+                </div>
+                <canvas id="canvas_1" width="150" height="150"></canvas>
+                <canvas id="canvas_2" width="150" height="150"></canvas>
+            </div>
+            <div id="tou">
+                <div id="dv1">
+                    <p class="pl">半</p>
+                    <h6>华金2号 半年投</h6>
+                    <p class="ps">限</p>
+                </div>
+                <div id="dv2">
+                    <li class="liz">年化收益</li>
+                    <li class="lis">期限</li>
+                    <li class="lix">起投金额</li>
+                </div>
+                <div id="dv3">
+                    <li class="li1">10.00%+5.50%</li>
+                    <li class="li2">2个月</li>
+                    <li class="li3">1000元</li>
+                </div>
+                <canvas id="canvas_3" width="150" height="150"></canvas>
+                <canvas id="canvas_4" width="150" height="150"></canvas>
+            </div>
+            <div id="tou">
+                <div id="dv1">
+                    <p class="pl">天</p>
+                    <h6>华金3号 半月投</h6>
+                </div>
+                <div id="dv2">
+                    <li class="liz">年化收益</li>
+                    <li class="lis">期限</li>
+                    <li class="lix">起投金额</li>
+                </div>
+                <div id="dv3">
+                    <li class="li1">10.00%+5.50%</li>
+                    <li class="li2">1个月</li>
+                    <li class="li3">1000元</li>
+                </div>
+                <canvas id="canvas_5" width="150" height="150"></canvas>
+                <canvas id="canvas_6" width="150" height="150"></canvas>
+            </div>
+        </section>
+        <footer id="footer">
+            <div>
+                <li style="color:#cf0116;">
+                    <p class="iconfont icon-shouye"></p>
+                    <a>首页</a>
+                </li>
+            </div>
+            <div>
+                <li>
+                    <p class="iconfont icon-zhifu-01"></p>
+                    <a>理财</a>
+                </li>
+            </div>
+
+            <div>
+                <li>
+                    <p class="iconfont icon-yonghu"></p>
+                    <a>账户</a>
+                </li>
+            </div>
+            <div>
+                <li>
+                    <p class="iconfont icon-share"></p>
+                    <a>更多</a>
+                </li>
+            </div>
+        </footer>
+    </div>
+</body>
+<script src="script/flexible.js"></script>
+<script src="script/swiper.min.js"></script>
+<script>
+    var lis = document.querySelectorAll("#footer div li");
+    var mySwiper = new Swiper(".swiper-container", {
+        loop: true,
+        autoplay: {
+            delay: 1500,
+        }
+    });
+    lis.forEach(function(item) {
+        item.addEventListener("touchstart", function() {
+            lis.forEach(function(item) {
+                item.style.color = "#8a8a8a";
+            })
+            item.style.color = "#cf0116";
+        })
+    });
+
+    function inte(percent) {
+        var canvas_1 = document.querySelector('#canvas_1');
+        var canvas_2 = document.querySelector('#canvas_2');
+        var ctx_1 = canvas_1.getContext('2d');
+        var ctx_2 = canvas_2.getContext('2d');
+        ctx_1.lineWidth = 10;
+        ctx_1.strokeStyle = "#ccc";
+        //画底部的灰色圆环
+        ctx_1.beginPath();
+        ctx_1.arc(canvas_1.width / 2, canvas_1.height / 2, canvas_1.width / 2 - ctx_1.lineWidth / 2, 0, Math.PI * 2, false);
+        ctx_1.closePath();
+        ctx_1.stroke();
+        if (percent < 0 || percent > 100) {
+            throw new Error('percent must be between 0 and 100');
+            return
+        }
+        ctx_2.lineWidth = 10;
+        ctx_2.strokeStyle = "#ff0301";
+        var angle = 0;
+        var timer;
+        (function draw() {
+            timer = requestAnimationFrame(draw);
+            ctx_2.clearRect(0, 0, canvas_2.width, canvas_2.height);
+            //百分比圆环
+            ctx_2.beginPath();
+            ctx_2.arc(canvas_2.width / 2, canvas_2.height / 2, canvas_2.width / 2 - ctx_2.lineWidth / 2, 0, angle * Math.PI / 180, false);
+            angle++;
+            var percentAge = parseInt((angle / 360) * 100)
+            if (angle > (percent / 100 * 360)) {
+                percentAge = percent
+                window.cancelAnimationFrame(timer);
+            };
+            ctx_2.stroke();
+            ctx_2.closePath();
+            ctx_2.save();
+            ctx_2.beginPath();
+            ctx_2.rotate(90 * Math.PI / 180)
+            ctx_2.font = '30px Arial';
+            ctx_2.fillStyle = 'red';
+            var text = percentAge + '%';
+            ctx_2.fillText(text, 50, -60);
+            ctx_2.closePath();
+            ctx_2.restore();
+        })()
+    }
+    inte(60);
+
+
+    function init(percent) {
+        var canvas_1 = document.querySelector('#canvas_3');
+        var canvas_2 = document.querySelector('#canvas_4');
+        var ctx_1 = canvas_1.getContext('2d');
+        var ctx_2 = canvas_2.getContext('2d');
+        ctx_1.lineWidth = 10;
+        ctx_1.strokeStyle = "#ccc";
+        //画底部的灰色圆环
+        ctx_1.beginPath();
+        ctx_1.arc(canvas_1.width / 2, canvas_1.height / 2, canvas_1.width / 2 - ctx_1.lineWidth / 2, 0, Math.PI * 2, false);
+        ctx_1.closePath();
+        ctx_1.stroke();
+        if (percent < 0 || percent > 100) {
+            throw new Error('percent must be between 0 and 100');
+            return
+        }
+        ctx_2.lineWidth = 10;
+        ctx_2.strokeStyle = "#ff0301";
+        var angle = 0;
+        var timer;
+        (function draw() {
+            timer = requestAnimationFrame(draw);
+            ctx_2.clearRect(0, 0, canvas_2.width, canvas_2.height);
+            //百分比圆环
+            ctx_2.beginPath();
+            ctx_2.arc(canvas_2.width / 2, canvas_2.height / 2, canvas_2.width / 2 - ctx_2.lineWidth / 2, 0, angle * Math.PI / 180, false);
+            angle++;
+            var percentAge = parseInt((angle / 360) * 100)
+            if (angle > (percent / 100 * 360)) {
+                percentAge = percent
+                window.cancelAnimationFrame(timer);
+            };
+            ctx_2.stroke();
+            ctx_2.closePath();
+            ctx_2.save();
+            ctx_2.beginPath();
+            ctx_2.rotate(90 * Math.PI / 180)
+            ctx_2.font = '30px Arial';
+            ctx_2.fillStyle = 'red';
+            var text = percentAge + '%';
+            ctx_2.fillText(text, 50, -60);
+            ctx_2.closePath();
+            ctx_2.restore();
+        })()
+    }
+    init(45);
+
+    function ins(percent) {
+        var canvas_1 = document.querySelector('#canvas_5');
+        var canvas_2 = document.querySelector('#canvas_6');
+        var ctx_1 = canvas_1.getContext('2d');
+        var ctx_2 = canvas_2.getContext('2d');
+        ctx_1.lineWidth = 10;
+        ctx_1.strokeStyle = "#ccc";
+        //画底部的灰色圆环
+        ctx_1.beginPath();
+        ctx_1.arc(canvas_1.width / 2, canvas_1.height / 2, canvas_1.width / 2 - ctx_1.lineWidth / 2, 0, Math.PI * 2, false);
+        ctx_1.closePath();
+        ctx_1.stroke();
+        if (percent < 0 || percent > 100) {
+            throw new Error('percent must be between 0 and 100');
+            return
+        }
+        ctx_2.lineWidth = 10;
+        ctx_2.strokeStyle = "#ff0301";
+        var angle = 0;
+        var timer;
+        (function draw() {
+            timer = requestAnimationFrame(draw);
+            ctx_2.clearRect(0, 0, canvas_2.width, canvas_2.height);
+            //百分比圆环
+            ctx_2.beginPath();
+            ctx_2.arc(canvas_2.width / 2, canvas_2.height / 2, canvas_2.width / 2 - ctx_2.lineWidth / 2, 0, angle * Math.PI / 180, false);
+            angle++;
+            var percentAge = parseInt((angle / 360) * 100)
+            if (angle > (percent / 100 * 360)) {
+                percentAge = percent
+                window.cancelAnimationFrame(timer);
+            };
+            ctx_2.stroke();
+            ctx_2.closePath();
+            ctx_2.save();
+            ctx_2.beginPath();
+            ctx_2.rotate(90 * Math.PI / 180)
+            ctx_2.font = '30px Arial';
+            ctx_2.fillStyle = 'red';
+            var text = percentAge + '%';
+            ctx_2.fillText(text, 50, -60);
+            ctx_2.closePath();
+            ctx_2.restore();
+        })()
+    }
+    ins(80);
+</script>
+
+</html>
